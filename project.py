@@ -15,12 +15,11 @@ def main():
     
     graph_best_stats_legendary(axs[0, 0], top_base_stats_legendary)
     graph_best_stats_non_legendary(axs[0, 1], top_base_stats_non_legendary)
-    graph_best_stats_legendary(axs[1, 0], top_base_stats_legendary)
-    graph_best_stats_non_legendary(axs[1, 1], top_base_stats_non_legendary)
+
   
     plt.tight_layout()
     
-    # plt.show()
+    plt.show()
 
 
 def find_best_stats_legendary(df):
