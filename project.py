@@ -1,11 +1,7 @@
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
 
-GRAPH_TITLE_COLORS = {
-    
-}
 TYPE_COLORS = {
         'Water': '#3399FF',     
         'Fire': '#FF4422',      
@@ -33,20 +29,20 @@ def main():
     fig, axs = plt.subplots(2, 2, figsize=(12, 7), num='Pokemon Stats Distribution Visualization')
     
     df = pd.read_csv('data/Pokemon.csv', index_col=0) # data already cleaned (source: kaggle)
-    
-    
+
     top_base_stats_legendary = find_best_stats_legendary(df)
     top_base_stats_non_legendary = find_best_stats_non_legendary(df)
     common_types = find_most_common_types(df)
-    common_stats = find_most_common_stat(df)
-
+    dual_types_stats = find_dual_type(df)
+    
     graph_best_stats_legendary(axs[0, 0], top_base_stats_legendary)
     graph_best_stats_non_legendary(axs[0, 1], top_base_stats_non_legendary)
     graph_type_distribution(axs[1, 0], common_types)
+    graph_dual_type_comparison(axs[1, 1], dual_types_stats)
 
     plt.tight_layout()
     
-    # plt.show()
+    plt.show()
 
 def find_best_stats_legendary(df):
     df = df.sort_values('Total', ascending=False).head(10)
@@ -64,28 +60,29 @@ def find_most_common_types(df):
     df = df.dropna(axis=0).value_counts()
     df = df.head(10)
     return df
-
-def find_most_common_stat(df):
-    df = df.loc[:, ['HP', 'Attack', 'Defense', 'Sp. Atk' ,'Sp. Def', 'Speed']]
-    # print(df.sum())
+    
+def find_dual_type(df):
+    df['Dual Type'] = df['Type 2'].notna()
+    df = df.groupby('Dual Type')['Total'].mean()
+    return df
 
 def graph_best_stats_legendary(axs, stat):
-    axs.set_title('Top Stats for Legendaries', fontsize=12, weight='bold', color='skyblue')
+    axs.set_title('Top Stats for Legendaries', fontsize=12, weight='bold')
     axs.barh(stat['Name'], stat['Total'])
     axs.tick_params(axis='y', labelsize=10)
-    axs.grid(axis='x', linestyle='--', alpha=0.4)
+    axs.grid(False)
     
     yticklabels = axs.get_yticklabels()
-    yticklabels[-1].set_fontweight('bold')
+    yticklabels[-1].set_fontweight('bold') # make the top 1 bold
     
 def graph_best_stats_non_legendary(axs, stat):
     axs.set_title('Top Stats for Non-Legendaries', fontsize=12, weight='bold')
     axs.barh(stat['Name'], stat['Total'])
+    axs.grid(False)
     axs.tick_params(axis='y', labelsize=10)
-    axs.grid(axis='x', linestyle='--', alpha=0.4)
     
     yticklabels = axs.get_yticklabels()
-    yticklabels[-1].set_fontweight('bold') 
+    yticklabels[-1].set_fontweight('bold') # make the top 1 bold
     
     
 def graph_type_distribution(axs, stat):
@@ -116,8 +113,17 @@ def graph_type_distribution(axs, stat):
         else:
             autotext.set_fontsize(8)
 
+def graph_dual_type_comparison(axs, stat):
+    axs.set_title('Avg Total Stats: Single vs Dual Type', fontsize=12, weight='bold', pad=15)
+    bars = axs.bar(['Single Type', 'Dual Type'], stat, color=['#aec7e8', '#008fd5'])
+    axs.bar_label(bars, fmt='%.1f', fontsize=9)
+    axs.grid(False)
     
-
-
+    xticklabels = axs.get_xticklabels()
+    xticklabels[-1].set_fontweight('bold')
+    
+    for title in xticklabels:
+        title.set_fontsize(10)
+    
 if __name__ == '__main__':
     main()
