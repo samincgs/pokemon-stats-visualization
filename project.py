@@ -1,7 +1,14 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
+GRAPH_PER_ROW, GRAPH_PER_COL = 2, 2
+FIGSIZE = (12, 7)
+FONT_SIZES = {
+    'sm': 8,
+    'md': 9,
+    'lg': 10,
+    'xl': 12
+}
 TYPE_COLORS = {
         'Water': '#3399FF',     
         'Fire': '#FF4422',      
@@ -26,7 +33,7 @@ plt.style.use('fivethirtyeight')
 
 def main(): 
     
-    fig, axs = plt.subplots(2, 2, figsize=(12, 7), num='Pokemon Stats Distribution Visualization')
+    fig, axs = plt.subplots(GRAPH_PER_ROW, GRAPH_PER_COL, figsize=FIGSIZE, num='Pokemon Stats Distribution Visualization')
     
     df = pd.read_csv('data/Pokemon.csv', index_col=0) # data already cleaned (source: kaggle)
 
@@ -67,26 +74,26 @@ def find_dual_type(df):
     return df
 
 def graph_best_stats_legendary(axs, stat):
-    axs.set_title('Top Stats for Legendaries', fontsize=12, weight='bold')
+    axs.set_title('Top Stats for Legendaries', fontsize=FONT_SIZES['xl'], weight='bold')
     axs.barh(stat['Name'], stat['Total'])
-    axs.tick_params(axis='y', labelsize=10)
+    axs.tick_params(axis='y', labelsize=FONT_SIZES['lg'])
     axs.grid(False)
     
     yticklabels = axs.get_yticklabels()
     yticklabels[-1].set_fontweight('bold') # make the top 1 bold
     
 def graph_best_stats_non_legendary(axs, stat):
-    axs.set_title('Top Stats for Non-Legendaries', fontsize=12, weight='bold')
+    axs.set_title('Top Stats for Non-Legendaries', fontsize=FONT_SIZES['xl'], weight='bold')
     axs.barh(stat['Name'], stat['Total'])
+    axs.tick_params(axis='y', labelsize=FONT_SIZES['lg'])
     axs.grid(False)
-    axs.tick_params(axis='y', labelsize=10)
     
     yticklabels = axs.get_yticklabels()
     yticklabels[-1].set_fontweight('bold') # make the top 1 bold
     
     
 def graph_type_distribution(axs, stat):
-    axs.set_title('Most Common Pokemon Types Throughout all Generations', fontsize=12, weight='bold', pad=15)
+    axs.set_title('Most Common Pokemon Types Throughout all Generations', fontsize=FONT_SIZES['xl'], weight='bold', pad=15)
     
     colors = [TYPE_COLORS[c] for c in stat.index]
                 
@@ -114,7 +121,7 @@ def graph_type_distribution(axs, stat):
             autotext.set_fontsize(8)
 
 def graph_dual_type_comparison(axs, stat):
-    axs.set_title('Avg Total Stats: Single vs Dual Type', fontsize=12, weight='bold', pad=15)
+    axs.set_title('Avg Total Stats: Single vs Dual Type', fontsize=FONT_SIZES['xl'], weight='bold', pad=15)
     bars = axs.bar(['Single Type', 'Dual Type'], stat, color=['#aec7e8', '#008fd5'])
     axs.bar_label(bars, fmt='%.1f', fontsize=9)
     axs.grid(False)
