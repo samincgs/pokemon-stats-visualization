@@ -27,7 +27,7 @@ TYPE_COLORS = {
         'Ice': '#98D8D8',       
         'Fairy': '#EE99AC',     
         'Fighting': '#C03028'   
-    }
+}
 
 plt.style.use('fivethirtyeight')
 
