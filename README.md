@@ -6,6 +6,8 @@
 
 This project is a data visualization program designed to explore and present insights from a Pokémon dataset. Since Pokemon is a game that has a special place in my heart, I wanted to create a fun little visualization that displays some interesting statistics that other's might not know. This program leverages Python's `pandas` and `matplotlib` libraries to showcase patterns and comparisons across different Pokémon categories, such as Legendary status, type distribution, and dual-typing effects on total base stats.
 
+<!--add video demo here, fill out the form -->
+
 ### Dataset
 
 The dataset used in this project is a cleaned version of the original `Pokemon.csv` file, sourced from Kaggle. It contains detailed information on 721 Pokémon across multiple generations, including their base stats, types, and whether they are classified as Legendary.
