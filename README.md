@@ -29,7 +29,7 @@ The dataset used in this project is a cleaned version of the original `Pokemon.c
 
 #### Source
 
-The dataset is publicly available on Kaggle and can be accessed [here](https://www.kaggle.com/datasets/abcsds/pokemon?resource=download).
+The dataset is publicly available on Kaggle and can be accessed [here](https://www.kaggle.com/datasets/abcsds/pokemon?resource=download). </br>
 Credits to Alberto Barradas for the dataset.
 
 ### Project Files
@@ -38,4 +38,12 @@ This project consists of two main Python files:
 
 #### `project.py`
 
-This file contains all the **data analysis and visualization logic**.
+This is the core of the application. The file contains all the **data analysis and visualization logic**. It is responsible for reading the dataset, performing transformation steps, and generating insights. All of this is accomplished using Python’s data analysis libraries, including **pandas** and **matplotlib**. The code is written using a modular approach. I have functions that take the DataFrame and extract or transform the necessary data, and separate functions that take that data and generate the four visualizations. By keeping data processing and visualization logic separate, the code is easier to read, test, maintain, and debug.
+
+#### `test_project.py`
+
+The `test_project.py` file contains all the unit tests for the core functions in the main script. It uses the **pytest** framework to test each function responsible for extracting and transforming the data. For each of the four main extraction functions, I wrote two tests: one where the input DataFrame contains fewer than 10 entries, and one where it contains more than 10. This is important because most of the extraction functions are designed to return the top 8 or 10 items, depending on the specific logic. By testing both edge cases, I ensured that the functions behave correctly regardless of the size of the input data.
+
+## Conclusion
+
+The visualization reveals clear trends in Pokémon design across generations. Legendary Pokémon consistently have the highest total base stats, reinforcing their role as powerful and rare figures in the game. Among non legendaries, a few standouts like Slaking and Garchomp approach legendary level strength, particularly among pseudo-legendaries. Water-type Pokémon are the most common overall, reflecting their frequent presence in each generation and their importance to game balance. Additionally, dual-type Pokémon tend to have higher average stats compared to single-type ones, suggesting that versatility often comes with a statistical advantage.

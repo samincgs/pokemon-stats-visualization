@@ -42,7 +42,6 @@ def main():
     common_types = find_most_common_types(df)
     dual_types_stats = find_dual_type(df)
     
-    print(dual_types_stats)
     graph_best_stats_legendary(axs[0, 0], top_base_stats_legendary)
     graph_best_stats_non_legendary(axs[0, 1], top_base_stats_non_legendary)
     graph_type_distribution(axs[1, 0], common_types)
