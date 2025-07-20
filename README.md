@@ -6,7 +6,7 @@
 
 This project is a data visualization program designed to explore and present insights from a Pokémon dataset. Since Pokemon is a game that has a special place in my heart, I wanted to create a fun little visualization that displays some interesting statistics that other's might not know. This program leverages `Excel` and Python's `pandas` and `matplotlib` libraries to showcase patterns and comparisons across different Pokémon categories, such as Legendary status, type distribution, and dual-typing effects on total base stats.
 
-[Video Link:](https://www.youtube.com/watch?v=nSa-Su_FPX4)
+Video Link: [https://www.youtube.com/watch?v=nSa-Su_FPX4](https://www.youtube.com/watch?v=nSa-Su_FPX4)
 
 ### Dataset
 
