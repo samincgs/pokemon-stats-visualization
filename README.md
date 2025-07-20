@@ -4,9 +4,9 @@
 
 ## Description
 
-This project is a data visualization program designed to explore and present insights from a Pokémon dataset. Since Pokemon is a game that has a special place in my heart, I wanted to create a fun little visualization that displays some interesting statistics that other's might not know. This program leverages Python's `pandas` and `matplotlib` libraries to showcase patterns and comparisons across different Pokémon categories, such as Legendary status, type distribution, and dual-typing effects on total base stats.
+This project is a data visualization program designed to explore and present insights from a Pokémon dataset. Since Pokemon is a game that has a special place in my heart, I wanted to create a fun little visualization that displays some interesting statistics that other's might not know. This program leverages `Excel` and Python's `pandas` and `matplotlib` libraries to showcase patterns and comparisons across different Pokémon categories, such as Legendary status, type distribution, and dual-typing effects on total base stats.
 
-<!--add video demo here, fill out the form -->
+[Video Link:](https://www.youtube.com/watch?v=nSa-Su_FPX4)
 
 ### Dataset
 
@@ -42,7 +42,7 @@ This is the core of the application. The file contains all the **data analysis a
 
 #### `test_project.py`
 
-The `test_project.py` file contains all the unit tests for the core functions in the main script. It uses the **pytest** framework to test each function responsible for extracting and transforming the data. For each of the four main extraction functions, I wrote two tests: one where the input DataFrame contains fewer than 10 entries, and one where it contains more than 10. This is important because most of the extraction functions are designed to return the top 8 or 10 items, depending on the specific logic. By testing both edge cases, I ensured that the functions behave correctly regardless of the size of the input data.
+This file contains all the unit tests for the core functions in the main script. It uses the **pytest** framework to test each function responsible for extracting and transforming the data. For each of the four main extraction functions, I wrote two tests: one where the input DataFrame contains fewer than 10 entries, and one where it contains more than 10. This is important because most of the extraction functions are designed to return the top 8 or 10 items, depending on the specific logic. By testing both edge cases, I ensured that the functions behave correctly regardless of the size of the input data.
 
 ## Conclusion
 
